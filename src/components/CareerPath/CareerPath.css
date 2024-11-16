@@ -1,0 +1,204 @@
+.career-container {
+  min-height: 100vh;
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+              url('../../asset/attenddance logo.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.career-content {
+  max-width: 1200px;
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.career-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+  color: #e0e0e0;
+}
+
+.career-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+  padding: 0 1rem;
+}
+
+.career-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.career-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.career-card.selected {
+  border-color: #007bff;
+  background: rgba(0, 123, 255, 0.2);
+}
+
+.career-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.career-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.career-card p {
+  color: #e0e0e0;
+  line-height: 1.5;
+}
+
+.submit-button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 2rem;
+  width: auto;
+  min-width: 200px;
+}
+
+.submit-button:hover:not(:disabled) {
+  background: #0056b3;
+  transform: scale(1.05);
+}
+
+.submit-button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  .career-container {
+    padding: 1rem;
+    padding-top: 70px; /* Account for fixed navbar */
+  }
+
+  .career-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .career-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+
+  .career-card {
+    padding: 1.5rem;
+  }
+
+  .career-icon {
+    font-size: 2.5rem;
+  }
+
+  .career-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .submit-button {
+    width: 100%;
+    max-width: none;
+    padding: 0.8rem;
+    font-size: 1rem;
+  }
+}
+
+/* Tablet Responsive Design */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .career-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .career-container {
+    padding: 1.5rem;
+    padding-top: 80px;
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) {
+  .career-card:hover {
+    transform: none;
+  }
+
+  .career-card:active {
+    transform: scale(0.98);
+  }
+
+  .submit-button:hover {
+    transform: none;
+  }
+
+  .submit-button:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Dark Mode Adjustments */
+@media (prefers-color-scheme: dark) {
+  .career-card {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .career-card:hover {
+    background: rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Safe Area Insets */
+@supports (padding: max(0px)) {
+  .career-container {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+} 

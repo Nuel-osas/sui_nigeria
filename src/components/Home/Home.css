@@ -1,0 +1,584 @@
+:root {
+  /* Light Theme Colors */
+  --primary-light: #00BFA5;
+  --primary-dark: #008C7A;
+  --secondary-light: #4CAF50;
+  --background-light: #ffffff;
+  --text-light: #333333;
+  --card-bg-light: #f5f5f5;
+  --accent-light: #E8F5E9;
+  
+  /* Dark Theme Colors */
+  --primary-dark-theme: #00E5BF;
+  --secondary-dark-theme: #69F0AE;
+  --background-dark: #1A1A1A;
+  --text-dark: #ffffff;
+  --card-bg-dark: #2D2D2D;
+  --accent-dark: #263238;
+}
+
+[data-theme='light'] {
+  --primary: var(--primary-light);
+  --secondary: var(--secondary-light);
+  --background: var(--background-light);
+  --text: var(--text-light);
+  --card-bg: var(--card-bg-light);
+  --accent: var(--accent-light);
+}
+
+[data-theme='dark'] {
+  --primary: var(--primary-dark-theme);
+  --secondary: var(--secondary-dark-theme);
+  --background: var(--background-dark);
+  --text: var(--text-dark);
+  --card-bg: var(--card-bg-dark);
+  --accent: var(--accent-dark);
+}
+
+.home-container {
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 4rem;
+  background: var(--accent);
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nigeria-logo {
+  width: 40px;  /* Adjust size as needed */
+  height: auto;
+  object-fit: contain;
+}
+
+.logo-text {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: rotate(15deg);
+}
+
+.rsvp-button {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rsvp-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 191, 165, 0.3);
+}
+
+.hero-section {
+  display: flex;
+  padding: 4rem;
+  gap: 3rem;
+  align-items: center;
+  max-width: 1800px;
+  margin: 0 auto;
+  background: linear-gradient(
+    135deg,
+    var(--accent) 0%,
+    var(--background) 100%
+  );
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  color: var(--text);
+  opacity: 0.8;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.detail-card {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.detail-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Add more styles for other components... */
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero-section {
+    flex-direction: column;
+    padding: 2rem;
+  }
+
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+
+  .nigeria-logo {
+    width: 30px;  /* Slightly smaller on mobile */
+  }
+  
+  .logo-text {
+    font-size: 1.5rem;
+  }
+}
+
+/* CTA Buttons Styling */
+.cta-buttons {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.register-button {
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, var(--primary-light), var(--secondary-light));
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 191, 165, 0.2);
+  text-transform: uppercase;
+}
+
+.register-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 191, 165, 0.3);
+}
+
+.register-button:active {
+  transform: translateY(-1px);
+}
+
+.schedule-button {
+  padding: 1rem 2.5rem;
+  background: transparent;
+  color: var(--text);
+  border: 2px solid var(--primary-light);
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+.schedule-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-light), var(--secondary-light));
+  transition: width 0.3s ease;
+  z-index: -1;
+  opacity: 0.1;
+}
+
+.schedule-button:hover {
+  color: var(--primary-light);
+}
+
+.schedule-button:hover::before {
+  width: 100%;
+}
+
+/* Responsive Design for Buttons */
+@media (max-width: 768px) {
+  .cta-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+/* Popup Styles */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.popup-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s ease-out;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: rotate(90deg);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dark mode styles for popup */
+[data-theme='dark'] .popup-content {
+  background: var(--card-bg-dark);
+  color: var(--text-dark);
+}
+
+[data-theme='dark'] .close-btn {
+  color: #fff;
+}
+
+[data-theme='dark'] .close-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Event Details Styling */
+.event-details {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.detail-card {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 191, 165, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.detail-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-light), var(--secondary-light));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.detail-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 191, 165, 0.15);
+}
+
+.detail-card:hover::before {
+  opacity: 1;
+}
+
+.label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--primary-light);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.value {
+  display: block;
+  font-size: 1.2rem;
+  color: var(--text);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Icon styles for each detail card */
+.detail-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.detail-card-icon {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-light);
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .detail-card {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme='dark'] .detail-card::before {
+  background: linear-gradient(90deg, var(--primary-dark-theme), var(--secondary-dark-theme));
+}
+
+[data-theme='dark'] .label {
+  color: var(--primary-dark-theme);
+}
+
+[data-theme='dark'] .value {
+  color: var(--text-dark);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .event-details {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .detail-card {
+    padding: 1.2rem;
+  }
+
+  .value {
+    font-size: 1.1rem;
+  }
+}
+
+/* Mobile Navigation */
+.mobile-menu-button {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Base styles with mobile-first approach */
+@media (max-width: 768px) {
+  /* Navbar Mobile Styles */
+  .navbar {
+    padding: 0.6rem 1rem;
+  }
+
+  .mobile-menu-button {
+    display: block;
+  }
+
+  .nav-links {
+    display: none; /* Hide by default on mobile */
+  }
+
+  .nav-links.active {
+    display: flex;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: var(--accent);
+    padding: 1rem;
+    gap: 1rem;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+  }
+
+  .logo-text {
+    font-size: 1.2rem;
+  }
+
+  .nigeria-logo {
+    width: 25px;
+  }
+
+  /* Hero Section Mobile Styles */
+  .hero-section {
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 2rem;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .register-button {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  /* Event Details Mobile Styles */
+  .event-details {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  .detail-card {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Carousel Mobile Styles */
+  .carousel-container {
+    width: 100%;
+    height: 300px;
+    margin: 0;
+    border-radius: 10px;
+  }
+
+  .carousel-arrow {
+    width: 30px;
+    height: 30px;
+    font-size: 1.2rem;
+  }
+
+  /* Popup Mobile Styles */
+  .popup-content {
+    width: 95%;
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+}
+
+/* Medium screens */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-section {
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  .carousel-container {
+    width: 600px;
+    height: 400px;
+  }
+}
