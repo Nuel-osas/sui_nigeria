@@ -12,15 +12,16 @@ function Attendance() {
   const [userName, setUserName] = useState('');
   const [timeLeft, setTimeLeft] = useState({});
   const [showCareerPath, setShowCareerPath] = useState(false);
+  const [hasMarkedAttendance, setHasMarkedAttendance] = useState(false);
 
-  // Event date - set this to your actual event date
-  const eventDate = new Date('2024-11-16T01:00:00').getTime();
+  // Set the event date to 10:00 AM
+  const eventDate = new Date('2024-11-16T10:00:00').getTime();
 
   useEffect(() => {
     const user = auth.currentUser;
     if (user) {
       setUserName(user.displayName || user.email);
-    }
+    } 
 
     // Countdown Timer
     const timer = setInterval(() => {
@@ -28,7 +29,7 @@ function Attendance() {
       const distance = eventDate - now;
 
       if (distance < 0) {
-        // Countdown is finished
+        // Event has started
         clearInterval(timer);
         setTimeLeft({
           days: '00',
@@ -54,10 +55,11 @@ function Attendance() {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [eventDate]);
+  }, []);
 
   const handleAttendanceClick = () => {
     setShowCareerPath(true);
+    setHasMarkedAttendance(true);
   };
 
   // Add career path options
@@ -98,92 +100,66 @@ function Attendance() {
   };
 
   return (
-    <div className={`attendance-container ${isDarkMode ? 'dark' : 'light'}`}>
+    <div className="attendance-container">
+      {/* Navbar stays at top */}
       <nav className="attendance-nav">
         <div className="nav-left">
-          <h1>Sui Nigeria Attendance</h1>
+          <h1>Sui Nigeria</h1>
         </div>
         <div className="nav-right">
-          <span className="user-name">Welcome, {userName}</span>
           <button className="theme-toggle" onClick={toggleTheme}>
-            {isDarkMode ? <FaSun /> : <FaMoon />}
-          </button>
-          <button className="sign-out-btn" onClick={handleSignOut}>
-            <FaSignOutAlt /> Sign Out
+            {isDarkMode ? '☀️' : '🌙'}
           </button>
         </div>
       </nav>
 
-      <main className="attendance-content">
-        <div className="attendance-card">
-          <h2>Event Countdown</h2>
-          <div className="countdown">
-            {eventDate - new Date().getTime() < 0 ? (
-              <div className="countdown-finished">Event has started!</div>
-            ) : (
-              <>
-                <div className="countdown-item">
-                  <div className="countdown-value">{timeLeft.days}</div>
-                  <div className="countdown-label">Days</div>
-                </div>
-                <div className="countdown-separator">:</div>
-                <div className="countdown-item">
-                  <div className="countdown-value">{timeLeft.hours}</div>
-                  <div className="countdown-label">Hours</div>
-                </div>
-                <div className="countdown-separator">:</div>
-                <div className="countdown-item">
-                  <div className="countdown-value">{timeLeft.minutes}</div>
-                  <div className="countdown-label">Minutes</div>
-                </div>
-                <div className="countdown-separator">:</div>
-                <div className="countdown-item">
-                  <div className="countdown-value">{timeLeft.seconds}</div>
-                  <div className="countdown-label">Seconds</div>
-                </div>
-              </>
-            )}
-          </div>
-
-          <div className="status-info">
-            <p>Event: Sui Nigeria Meetup 2024</p>
-            <p>Date: November 16, 2024 10:00 AM</p>
-            <p>Status: Registered</p>
-          </div>
-
-          <button 
-            className="attendance-button" 
-            onClick={handleAttendanceClick}
-          >
-            Mark Attendance
+      {/* Main content in ordered boxes */}
+      <div className="attendance-content">
+        {/* Welcome Box */}
+        <div className="welcome-box">
+          <h2>Welcome, {userName}</h2>
+          <button className="sign-out-btn" onClick={handleSignOut}>
+            <span>Sign Out</span>
           </button>
-
-          {showCareerPath && (
-            <div className="career-path-overlay">
-              <div className="career-path-modal">
-                <h2>Select Your Career Path</h2>
-                <div className="career-grid">
-                  {careerPaths.map(path => (
-                    <div key={path.id} className="career-card">
-                      <div className="career-icon">{path.icon}</div>
-                      <h3>{path.title}</h3>
-                      <p>{path.description}</p>
-                    </div>
-                  ))}
-                </div>
-                <button 
-                  className="close-button"
-                  onClick={() => setShowCareerPath(false)}
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          )}
         </div>
-      </main>
+
+        {/* Countdown Box */}
+        <div className="countdown-box">
+          <h2>Next Session Starts In</h2>
+          <div className="countdown">
+            <div className="countdown-item">
+              <div className="countdown-value">{timeLeft.days}</div>
+              <div className="countdown-label">Days</div>
+            </div>
+            <div className="countdown-item">
+              <div className="countdown-value">{timeLeft.hours}</div>
+              <div className="countdown-label">Hours</div>
+            </div>
+            <div className="countdown-item">
+              <div className="countdown-value">{timeLeft.minutes}</div>
+              <div className="countdown-label">Minutes</div>
+            </div>
+            <div className="countdown-item">
+              <div className="countdown-value">{timeLeft.seconds}</div>
+              <div className="countdown-label">Seconds</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Attendance Box */}
+        <div className="attendance-box">
+          <h2>Mark Your Attendance</h2>
+          <button 
+            className={`attendance-button ${hasMarkedAttendance ? 'success' : ''}`}
+            onClick={handleAttendanceClick}
+            disabled={hasMarkedAttendance}
+          >
+            {hasMarkedAttendance ? 'Attendance Marked ✓' : 'Mark Attendance'}
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
 
-export default Attendance; 
+export default Attendance; a
