@@ -147,7 +147,7 @@ function Attendance() {
 
           <div className="status-info">
             <p>Event: Sui Nigeria Meetup 2024</p>
-            <p>Date: November 16, 2024 1:00 AM</p>
+            <p>Date: November 16, 2024 10:00 AM</p>
             <p>Status: Registered</p>
           </div>
 
